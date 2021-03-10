@@ -30,6 +30,7 @@ import zxRate from "./zxRate.vue";
 import zxTimePicker from "./zxTimePicker.vue";
 import zxTag from "./zxTag.vue";
 import zxSwitch from "./zxSwitch.vue";
+import zxCascader from "./zxCascader.vue";
 
 export default {
   name: "index",
@@ -50,7 +51,8 @@ export default {
     zxRate,
     zxTimePicker,
     zxTag,
-    zxSwitch
+    zxSwitch,
+    zxCascader
   },
   emits: ['event'],
   props: {

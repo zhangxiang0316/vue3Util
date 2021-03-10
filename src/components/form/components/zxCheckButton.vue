@@ -35,7 +35,7 @@ export default {
   setup(prop, context) {
     onBeforeMount(() => {
       if (!prop.formData[prop.item.prop]) {
-        prop.formData[prop.item.prop]=[]
+        prop.formData[prop.item.prop] = []
       }
     })
     const change = () => {

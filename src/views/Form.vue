@@ -5,6 +5,9 @@
 */
 <template>
   <div class="form">
+    <el-date-picker v-model="tiem"  format="YYYY年MM月DD日 HH时mm分ss秒" style="width: 100%"  type="datetime"></el-date-picker>
+
+
     <zx-form ref="mForm" :formData="formData" :needToast="true" :form-cols="formCols" :rules="rules" @event="event">
       <template #test>
         <el-input v-model="formData.date0"></el-input>
@@ -16,6 +19,7 @@
 <script lang="ts">
 import {reactive, toRefs, ref} from 'vue'
 import zxForm from "@/components/form";
+import {CascaderOptions} from './data.js'
 
 export default {
   name: "Form",
@@ -26,6 +30,7 @@ export default {
     const mForm = ref(null);
     const data = reactive({
       show: false,
+      tiem:"",
       rules: {
         date5: [{required: true, message: '请选择活动区域', trigger: 'change'}],
         date11: {required: true, message: '请选择活动区域', trigger: 'change'},
@@ -122,6 +127,7 @@ export default {
             eType: 'DatePicker',
             type: 'datetime',
             label: "datetime",
+            format: 'YYYY/MM/DD HH:mm:ss',
             prop: 'date8',
             span: 6,
           },
@@ -242,6 +248,15 @@ export default {
           },
         ],
         [
+          {
+            eType: 'Cascader',
+            label: "Cascader",
+            options: CascaderOptions,
+            prop: 'date33',
+            span: 6,
+          },
+        ],
+        [
           {eType: 'Button', value: "提交", type: "success", prop: 'submit', span: 2,},
           {eType: 'Button', value: "隐藏", type: "success", prop: 'submit1', span: 2,},
           {eType: 'Button', value: "重置", type: "success", prop: 'reset', span: 2,}
@@ -251,7 +266,7 @@ export default {
     const event = (params) => {
       if (params.prop === 'submit1') {
         data.show = !data.show
-        mForm._value.setNoShow('date4', data.show)
+        mForm.value.setNoShow('date4', data.show)
       }
     }
     return {

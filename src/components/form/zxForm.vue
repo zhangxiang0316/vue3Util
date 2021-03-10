@@ -93,7 +93,7 @@ export default defineComponent({
     //提交校验
     const submit = () => {
       return new Promise((resolve) => {
-        elForm._value.validate((valid, message) => {
+        elForm.value.validate((valid, message) => {
           if (valid)
             resolve(valid)
           else if (props.needToast) {
